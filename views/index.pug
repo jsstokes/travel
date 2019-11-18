@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  h2 This is a basic template with bootstrap theme added and some customization for tables and colors.
+  div.table-div
+    form(action="")
+      div.form-group
+        label(for="dateField1") Field 1 (date)
+        input.form-control(type='date' id="dateField1" name='dateField1')
+      div.form-group
+        label(for="field2") Field Two
+        input.form-control(type='text' id="field2" name='field2')
+      div.form-group
+        button(type="submit") Submit Button
+        button(type="reset") Reset Button
+  DIV.table-div
+    table.table.table-striped.table-bordered
+      tr
+        th First Name
+        th Last Name
+      each document in documents
+        tr
+          td #{document.firstName}
+          td #{document.lastName}
+  button(id="myBtn") Open Modal
+
+  DIV.modal(id="modalForm")
+    DIV.modal-content
+      SPAN.close &times;
+      h2 Modal Input Form
+      form
+        DIV.form-group
+          label(for="field1") Field 1
+          input.form-control(name="field1", id="field1")
+        DIV.form-group
+          label(for="field2") Field 2
+          input.form-control(name="field2", id="field2")
+        DIV.form-group
+          label(for="field3") Field 3
+          input.form-control(name="field3", id="field3")
+        DIV.form-group
+          button(type="submit") Submit Button
+          button(type="reset") Cancel Button
+  script.
+    // Get the modal
+    var modal = document.getElementById("modalForm");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    var dateField1 = document.getElementById("dateField1").valueAsDate = new Date();
